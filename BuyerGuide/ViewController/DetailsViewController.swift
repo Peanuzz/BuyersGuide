@@ -9,6 +9,8 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
+    
+    var purple: PurpleModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

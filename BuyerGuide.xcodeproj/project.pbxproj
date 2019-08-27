@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		66D5E9B0231518D600A25936 /* FullListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D5E9AF231518D600A25936 /* FullListViewController.swift */; };
 		66D5E9B423151B8800A25936 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D5E9B323151B8800A25936 /* Model.swift */; };
 		66D5E9B623151DD100A25936 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D5E9B523151DD100A25936 /* ApiManager.swift */; };
+		66D5E9B82315318400A25936 /* PurpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D5E9B72315318400A25936 /* PurpleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		66D5E9AF231518D600A25936 /* FullListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullListViewController.swift; sourceTree = "<group>"; };
 		66D5E9B323151B8800A25936 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		66D5E9B523151DD100A25936 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		66D5E9B72315318400A25936 /* PurpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleTableViewCell.swift; sourceTree = "<group>"; };
 		C04E8FF73A7992C91483313D /* Pods-BuyerGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuyerGuide.release.xcconfig"; path = "Target Support Files/Pods-BuyerGuide/Pods-BuyerGuide.release.xcconfig"; sourceTree = "<group>"; };
 		C472721995A7D49D489F9426 /* Pods_BuyerGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BuyerGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,7 +56,6 @@
 				27025F301CE8BD740B588767 /* Pods-BuyerGuide.debug.xcconfig */,
 				C04E8FF73A7992C91483313D /* Pods-BuyerGuide.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,6 +89,7 @@
 				66D5E9A2231502F300A25936 /* Assets.xcassets */,
 				66D5E9A4231502F300A25936 /* LaunchScreen.storyboard */,
 				66D5E9A7231502F300A25936 /* Info.plist */,
+				66D5E9B72315318400A25936 /* PurpleTableViewCell.swift */,
 			);
 			path = BuyerGuide;
 			sourceTree = "<group>";
@@ -235,6 +237,7 @@
 				66D5E9B423151B8800A25936 /* Model.swift in Sources */,
 				66D5E99E231502F100A25936 /* ViewController.swift in Sources */,
 				66D5E9B0231518D600A25936 /* FullListViewController.swift in Sources */,
+				66D5E9B82315318400A25936 /* PurpleTableViewCell.swift in Sources */,
 				66D5E99C231502F100A25936 /* AppDelegate.swift in Sources */,
 				66D5E9B623151DD100A25936 /* ApiManager.swift in Sources */,
 				66D5E9AE231518AB00A25936 /* DetailsViewController.swift in Sources */,
