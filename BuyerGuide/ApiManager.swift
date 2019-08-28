@@ -12,6 +12,7 @@ import SwiftyJSON
 
 protocol APIManagerProtocol {
     func getPurpleModel(completion: @escaping (Swift.Result<[PurpleModel], Error>) -> Void)
+    func getPurpleTop(mobileID: Int, completion: @escaping (Swift.Result<[PurpleTopLevel], Error>) -> Void)
 }
 
 class APIManager: APIManagerProtocol {
@@ -36,4 +37,24 @@ class APIManager: APIManagerProtocol {
         }
     }
     
-    }
+    func getPurpleTop(mobileID:Int, completion: @escaping (Result<[PurpleTopLevel], Error>) -> Void) {
+            let baseURL = "https://scb-test-mobile.herokuapp.com/api/mobiles/\(mobileID)/images/"
+            AF.request(baseURL)
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success:
+                        do {
+                            let product = try JSONDecoder().decode([PurpleTopLevel].self, from: response.data!)
+                            completion(.success(product))
+                        } catch (let error) {
+                            completion(.failure(error))
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+            }
+        }
+    
+}
+

@@ -18,59 +18,18 @@ struct PurpleModel: Codable {
     let brand, name, description: String
 }
 
-// MARK: Convenience initializers
+typealias TopLevel = [PurpleTopLevel]
 
-extension PurpleModel {
-    init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(PurpleModel.self, from: data) else { return nil }
-        self = me
-    }
+struct PurpleTopLevel: Codable {
+    let url: String
+    let id, mobileID: Int
 
-    init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
-    }
-
-    init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
-    }
-
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
-    }
-
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    enum CodingKeys: String, CodingKey {
+        case url, id
+        case mobileID = "mobile_id"
     }
 }
 
-extension Array where Element == Model.Element {
-    init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Model.self, from: data) else { return nil }
-        self = me
-    }
 
-    init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
-    }
 
-    init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
-    }
-
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
-    }
-
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
-    }
-}
 

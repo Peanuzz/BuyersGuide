@@ -26,8 +26,8 @@ class PurpleTableViewCell: UITableViewCell {
     func configCell(purple: PurpleModel) {
         nameLabel.text = purple.name
         descriptionLabel.text = purple.description
-        priceLabel.text = "\(purple.price)"
-        ratingLabel.text = "\(purple.rating)"
+        priceLabel.text = "Price: $\(purple.price)"
+        ratingLabel.text = "Rating: \(purple.rating)"
         productImageView.kf.setImage(with: URL(string: purple.thumbImageURL))
     }
 

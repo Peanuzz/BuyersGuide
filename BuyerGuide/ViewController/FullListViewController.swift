@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class FullListViewController: UIViewController {
     
@@ -17,15 +18,9 @@ class FullListViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.estimatedRowHeight = 500
-        tableView.rowHeight = UITableView.automaticDimension
         getPurpleModel()
-
-        // Do any additional setup after loading the view.
     }
     
     func getPurpleModel() {
@@ -47,8 +42,39 @@ class FullListViewController: UIViewController {
             let indexPath = tableView.indexPathForSelectedRow
             if let indexPath = indexPath {
                 vc?.purple = purplemodels[(indexPath as NSIndexPath).row]
+                let item: PurpleModel = purplemodels[indexPath.item]
+                let id = item.id
+                print(id)
+                vc?.mobileID = id
             }
         }
+    }
+    
+    @IBAction func actionSort(_ sender: Any) {
+        let alert = UIAlertController(title: "Sort",
+                                      message: "",
+                                      preferredStyle: .alert)
+        let sortLowtoHight = UIAlertAction(title: "Sort Low to Hight", style: .default,handler: { (action) -> Void in
+            self.purplemodels = self.purplemodels.sorted(by: { $0.price < $1.price })
+            self.tableView.reloadData()
+        })
+        let sortHighttoLow = UIAlertAction(title: "Sort Hight to Low", style: .default,handler: { (action) -> Void in
+            self.purplemodels = self.purplemodels.sorted(by: { $0.price > $1.price })
+            self.tableView.reloadData()
+        })
+        let sortRating = UIAlertAction(title: "Rating", style: .default,handler: { (action) -> Void in
+            self.purplemodels = self.purplemodels.sorted(by: { $0.rating > $1.rating })
+            self.tableView.reloadData()
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
+        
+        alert.addAction(sortLowtoHight)
+        alert.addAction(sortHighttoLow)
+        alert.addAction(sortRating)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
     }
 }
 
@@ -61,20 +87,14 @@ extension FullListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PurpleTableViewCell.CellIdentifier, for: indexPath) as? PurpleTableViewCell else {
             return UITableViewCell()
         }
-        let item = self.purplemodels[indexPath.row]
-        cell.nameLabel.text = item.name
-        cell.descriptionLabel.text = item.description
-        cell.priceLabel.text = "\(item.price)"
-        cell.ratingLabel.text = "\(item.rating)"
-        cell.productImageView.kf.setImage(with: URL(string: item.thumbImageURL))
-//        let purple: PurpleModel = purplemodels[indexPath.item]
-//        cell.configCell(purple: purple)
+        let purple: PurpleModel = purplemodels[indexPath.item]
+        cell.configCell(purple: purple)
         return cell
     }
 }
 
-//extension FullListViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//}
+extension FullListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
