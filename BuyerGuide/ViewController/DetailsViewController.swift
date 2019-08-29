@@ -54,7 +54,12 @@ extension DetailsViewController:UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCell
         let item = purpletop[indexPath.row]
-        cell.mImage.kf.setImage(with: URL(string: item.url))
+        let url = item.url
+        if url.contains("http://") || url.contains("https://"){
+            cell.mImage.kf.setImage(with: URL(string: url))
+        } else {
+            cell.mImage.kf.setImage(with: URL(string: "http://\(url)"))
+        }
         return cell
     }
     

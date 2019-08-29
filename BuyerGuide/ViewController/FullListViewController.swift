@@ -54,11 +54,11 @@ class FullListViewController: UIViewController {
         let alert = UIAlertController(title: "Sort",
                                       message: "",
                                       preferredStyle: .alert)
-        let sortLowtoHight = UIAlertAction(title: "Sort Low to Hight", style: .default,handler: { (action) -> Void in
+        let sortLowtoHight = UIAlertAction(title: "Price low to hight", style: .default,handler: { (action) -> Void in
             self.purplemodels = self.purplemodels.sorted(by: { $0.price < $1.price })
             self.tableView.reloadData()
         })
-        let sortHighttoLow = UIAlertAction(title: "Sort Hight to Low", style: .default,handler: { (action) -> Void in
+        let sortHighttoLow = UIAlertAction(title: "Price hight to low", style: .default,handler: { (action) -> Void in
             self.purplemodels = self.purplemodels.sorted(by: { $0.price > $1.price })
             self.tableView.reloadData()
         })
